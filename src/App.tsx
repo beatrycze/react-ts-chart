@@ -17,9 +17,6 @@ class App extends React.Component<AppProps, {}> {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        {/* <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
         <div className="Graph-container">
           <h3 className="Graph-header">Nomination Tool</h3>
           <svg width="500" height="390">
@@ -35,8 +32,14 @@ class App extends React.Component<AppProps, {}> {
               <text x="79%" y="330" text-anchor="middle">{graph3.value}</text>
               <text x="77%" y="380" text-anchor="middle">{graph3.label}</text>
 
-              <line x1="0" y1="350" x2="500" y2="350"
-                stroke-width="0.2" stroke="#878383"/>
+              <line 
+                x1="0" 
+                y1="350" 
+                x2="500"
+                y2="350"
+                stroke-width="0.2"
+                stroke="#878383"
+              />
           </svg>
         </div>
       </div>

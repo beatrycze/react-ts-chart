@@ -1,14 +1,14 @@
 export default {
     graph1: {
         value: 2,
-        label: "Top"
+        label: 'Top'
     },
     graph2: {
         value: 3,
-        label: "Good"
+        label: 'Good'
     },
     graph3: {
         value: 1,
-        label: "Low"
+        label: 'Low'
     }
 };
