@@ -3,7 +3,11 @@ import './App.css';
 
 const logo = require('./logo.svg');
 
-class App extends React.Component<{}, {}> {
+interface AppProps {
+  data?: any;
+}
+
+class App extends React.Component<AppProps, {}> {
   render() {
     const {graph1, graph2, graph3} = this.props.data;
 
