@@ -1,10 +1,11 @@
 import * as React from 'react';
 import './App.css';
+import { GraphData } from './data';
 
 const logo = require('./logo.svg');
 
 interface AppProps {
-  data?: any;
+  data: GraphData;
 }
 
 class App extends React.Component<AppProps, {}> {
