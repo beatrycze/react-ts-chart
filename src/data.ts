@@ -1,9 +1,9 @@
-export interface Graph {
+export type Graph = {
     value: number;
     label: string;
 }
 
-export interface GraphData {
+export type GraphData = {
     graph1: Graph;
     graph2: Graph;
     graph3: Graph;
