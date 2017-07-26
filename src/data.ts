@@ -1,13 +1,13 @@
 export type Graph = {
     value: number;
     label: string;
-}
+};
 
 export type GraphData = {
     graph1: Graph;
     graph2: Graph;
     graph3: Graph;
-}
+};
 
 export const data: GraphData = {
     graph1: {
