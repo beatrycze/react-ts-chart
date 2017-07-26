@@ -12,7 +12,9 @@ interface AppProps {
 class App extends React.Component<AppProps, {}> {
   render() {
     const { data } = this.props;
-    const MapedSvgEls = data.map((element, index) => <SvgGraphEl x={index} value={element.value}/>);
+    const MapedSvgElements = data.map((element, index) => 
+      <SvgGraphEl x={index} value={element.value} label={element.label} />
+    );
 
     return (
       <div className="App">
@@ -23,8 +25,7 @@ class App extends React.Component<AppProps, {}> {
         <div className="Graph-container">
           <h3 className="Graph-header">Nomination Tool</h3>
           <svg width="500" height="390">
-              {MapedSvgEls}
-
+              {MapedSvgElements}
               <line 
                 x1="0" 
                 y1="350" 
