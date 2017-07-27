@@ -12,15 +12,23 @@ interface AppProps {
 class App extends React.Component<AppProps, {}> {
   render() {
     const { graphData } = this.props;
+    const xRectPosition = 50;
+    const xRectCalc = 150;
+    const yRectPosition = 350;
+    const yRectCalc = 100;
+    const rectHeigh = 100;
+    const xTextPosition = 20;
+    const xTextCalc = 30;
+
     const MapedSvgElements = graphData.map((element, index) =>
       (
         <SvgGraphEl 
-          xRect={50 + index * 150}
-          yRect={350 - element.value * 100}
-          height={element.value * 100}
+          xRect={xRectPosition + index * xRectCalc}
+          yRect={yRectPosition - element.value * yRectCalc}
+          height={element.value * rectHeigh}
           value={element.value}
           label={element.label}
-          xText={`${20 + index * 30}%`}
+          xText={`${xTextPosition + index * xTextCalc}%`}
         />
       )      
     );
@@ -40,7 +48,7 @@ class App extends React.Component<AppProps, {}> {
                 y1="350" 
                 x2="500"
                 y2="350"
-                stroke-width="0.2"
+                strokeWidth="0.2"
                 stroke="#878383"
               />
           </svg>
