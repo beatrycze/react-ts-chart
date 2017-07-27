@@ -1,7 +1,10 @@
 import * as React from 'react';
 
 interface Props {
-  x: number;
+  xRect: number;
+  yRect: number;
+  height: number;
+  xText: string;
   value: number;
   label: string;
 }
@@ -9,11 +12,11 @@ interface Props {
 class SvgGraphElCmponent extends React.Component<Props, {}> {
   render() {
     return (
-      <svg>
-        <rect x="50" y={350 - this.props.value * 100} width="100" height={this.props.value * 100} fill="#3c66a8" />
-        <text x="19%" y="330" textAnchor="middle">{this.props.value}</text>
-        <text x="17%" y="380" textAnchor="middle">{this.props.label}</text>
-      </svg>
+      <g>
+        <rect x={this.props.xRect} y={this.props.yRect} width="100" height={this.props.height} fill="#3c66a8" />
+        <text x={this.props.xText} y="330" textAnchor="middle">{this.props.value}</text>
+        <text x={this.props.xText} y="380" textAnchor="middle">{this.props.label}</text>
+      </g>
     );
   }
 }
