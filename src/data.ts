@@ -3,7 +3,7 @@ export type Graph = {
     label: string;
 };
 
-export const data: Graph[] = [
+export const staicData: Graph[] = [
     {
         value: 2,
         label: 'Top'
