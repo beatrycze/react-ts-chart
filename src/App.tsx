@@ -13,19 +13,14 @@ class App extends React.Component<AppProps, {}> {
   render() {
     const { graphData } = this.props;
     const MapedSvgElements = graphData.map((element, index) => {
-      let xRectPosition = 50 + index * 150;
-      let yRectPosition = 350 - element.value * 100;
-      let heightRect = element.value * 100;
-      let xTextPosition = `${20 + index * 30}%`;
-
       return (
         <SvgGraphEl 
-          xRect={xRectPosition}
-          yRect={yRectPosition}
-          height={heightRect}
+          xRect={50 + index * 150}
+          yRect={350 - element.value * 100}
+          height={element.value * 100}
           value={element.value}
           label={element.label}
-          xText={xTextPosition}
+          xText={`${20 + index * 30}%`}
         />
       );      
     }
