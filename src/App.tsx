@@ -6,13 +6,13 @@ import SvgGraphEl from './SvgGraphEl';
 const logo = require('./logo.svg');
 
 interface AppProps {
-  data: Graph[];
+  graphData: Graph[];
 }
 
 class App extends React.Component<AppProps, {}> {
   render() {
-    const { data } = this.props;
-    const MapedSvgElements = data.map((element, index) => {
+    const { graphData } = this.props;
+    const MapedSvgElements = graphData.map((element, index) => {
       let xRectPosition = 50 + index * 150;
       let yRectPosition = 350 - element.value * 100;
       let heightRect = element.value * 100;

@@ -6,7 +6,7 @@ import './index.css';
 import { data } from './data';
 
 ReactDOM.render(
-  <App data={data} />,
+  <App graphData={data} />,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
