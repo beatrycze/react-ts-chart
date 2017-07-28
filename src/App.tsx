@@ -13,15 +13,13 @@ class App extends React.Component<AppProps, {}> {
   render() {
     const { graphData } = this.props;
 
-    const calc = 100; // ?
+    const calc = 100;
     const maxRect: Graph = graphData.reduce((prev: Graph, current: Graph) => (prev.value > current.value) ? prev : current);
     const svgHeight = maxRect.value * calc;
     const svgWidth = 150 * graphData.length + 50;
 
     const xRectPosition = 50;
     const xRectCalc = 150;
-    const rectHeigh = 100;
-    const xTextCalc = 150;
     const xTextValueCalc = 40;
     const yTextLabelCalc = 40;
 
@@ -30,14 +28,12 @@ class App extends React.Component<AppProps, {}> {
         <SvgGraphEl 
           xRect={xRectPosition + index * xRectCalc}
           yRect={svgHeight - element.value * calc}
-          height={element.value * rectHeigh}
-          xText={calc + index * xTextCalc} // ? xText={xRectPosition * 2 + index * xRectCalc} 
+          height={element.value * calc}
+          xText={xRectPosition * 2 + index * xRectCalc} 
           yTextValue={svgHeight - xTextValueCalc}
           yTextLabel={svgHeight + yTextLabelCalc}
           value={element.value}
           label={element.label}
-          // ? width
-          // ? fill
         />
       )      
     );
