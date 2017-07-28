@@ -3,7 +3,7 @@ export type Graph = {
     label: string;
 };
 
-export const staicData: Graph[] = [
+export const staticData: Graph[] = [
     {
         value: 2,
         label: 'Top'
@@ -15,5 +15,17 @@ export const staicData: Graph[] = [
     {
         value: 1,
         label: 'Low'
+    },
+    {
+        value: 4,
+        label: 'New'
+    },
+    {
+        value: 6,
+        label: 'Next'
+    },
+    {
+        value: 9,
+        label: 'Next'
     }
 ];

@@ -3,10 +3,10 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
-import { staicData } from './data';
+import { staticData } from './data';
 
 ReactDOM.render(
-  <App graphData={staicData} />,
+  <App graphData={staticData} />,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
