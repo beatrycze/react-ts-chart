@@ -25,7 +25,23 @@ export const staticData: Graph[] = [
         label: 'Next'
     },
     {
-        value: 2.5,
+        value: 9,
+        label: 'Next'
+    },
+    {
+        value: 3,
+        label: 'Next'
+    },
+    {
+        value: 8,
+        label: 'Next'
+    },
+    {
+        value: 16,
+        label: 'Next'
+    },
+    {
+        value: 5,
         label: 'Next'
     }
 ];
