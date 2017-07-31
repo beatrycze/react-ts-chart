@@ -21,11 +21,11 @@ export const staticData: Graph[] = [
         label: 'New'
     },
     {
-        value: 6,
+        value: 5,
         label: 'Next'
     },
     {
-        value: 9,
+        value: 2.5,
         label: 'Next'
     }
 ];

@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 import { Graph } from './data';
 import SvgGraphEl from './SvgGraphEl';
+import GraphContainer from './GraphContainer';
 
 const logo = require('./logo.svg');
 
@@ -22,6 +23,12 @@ class App extends React.Component<AppProps, {}> {
     const xRectCalc = 150;
     const xTextValueCalc = 40;
     const yTextLabelCalc = 40;
+
+    const divStyle = {
+      height: 200,
+      width: 200,
+      marginTop: 20
+    };
 
     const MapedSvgElements = graphData.map((element, index) =>
       (
@@ -58,6 +65,8 @@ class App extends React.Component<AppProps, {}> {
               />
           </svg>
         </div>
+        
+        <GraphContainer message="Lorem ipsum..." style={divStyle} width={divStyle.width} height={divStyle.height}/>
       </div>
     );
   }
