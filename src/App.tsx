@@ -26,13 +26,13 @@ class App extends React.Component<AppProps, {}> {
     const MapedSvgElements = graphData.map((element, index) =>
       (
         <SvgGraphEl 
-          xRect={(index + 0.25) * graphParams.svgWidth / graphData.length}
-          yRect={graphParams.svgHeight - element.value * graphParams.heightCalc}
+          xRect={(index + 0.25) * graphParams.svg.width / graphData.length}
+          yRect={graphParams.svg.height - element.value * graphParams.heightCalc}
           height={element.value * graphParams.heightCalc}
-          width={graphParams.svgWidth / graphData.length / 2}
-          xText={(index + 0.50) * graphParams.svgWidth / graphData.length}
-          yTextValue={graphParams.svgHeight - staticParams.textPositionCalc}
-          yTextLabel={graphParams.svgHeight + staticParams.textPositionCalc}
+          width={graphParams.svg.width / graphData.length / 2}
+          xText={(index + 0.50) * graphParams.svg.width / graphData.length}
+          yTextValue={graphParams.svg.height - staticParams.textPositionCalc}
+          yTextLabel={graphParams.svg.height + staticParams.textPositionCalc}
           value={element.value}
           label={element.label}
         />
@@ -47,13 +47,13 @@ class App extends React.Component<AppProps, {}> {
         </div>
           <div className="Graph-container" style={{width: staticParams.width, height: staticParams.height}}>
           <h3 className="Graph-header">Nomination Tool</h3>
-          <svg className="position" width={graphParams.svgWidth} height={graphParams.svgHeight}>
+          <svg className="position" width={graphParams.svg.width} height={graphParams.svg.height}>
               {MapedSvgElements}
               <line 
                 x1="0" 
-                y1={graphParams.svgHeight} 
-                x2={graphParams.svgWidth}
-                y2={graphParams.svgHeight}
+                y1={graphParams.svg.height} 
+                x2={graphParams.svg.width}
+                y2={graphParams.svg.height}
                 strokeWidth="1"
                 stroke="#878383"
               />

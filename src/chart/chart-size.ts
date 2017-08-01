@@ -17,7 +17,9 @@ export function calcGraphParams(container: ContainerSize, graphs: Graph[]) {
     return {
         heightCalc: heightCalc,
         widthCalc: widthCalc,
-        svgHeight: svgHeight,
-        svgWidth: svgWidth
+        svg: {
+            height: svgHeight,
+            width: svgWidth
+        }
     };
 }
