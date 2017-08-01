@@ -1,10 +1,10 @@
 import * as React from 'react';
 import './App.css';
-import { Graph } from './data';
+import { Graph } from './fake/data';
 import SvgGraphEl from './SvgGraphEl';
 import GraphContainer from './GraphContainer';
 import { staticParams } from './graph-params';
-import { calcGraphParams } from './helpers/chart-counting';
+import { calcGraphParams } from './chart/chart-size';
 
 const logo = require('./logo.svg');
 

@@ -1,5 +1,5 @@
-import { Graph } from '../data';
-import { staticData } from '../data';
+import { Graph } from '../fake/data';
+import { staticData } from '../fake/data';
 
 const maxRect: Graph = staticData.reduce((prev: Graph, current: Graph) => (prev.value > current.value) ? prev : current);
 
