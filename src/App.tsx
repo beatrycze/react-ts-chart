@@ -3,6 +3,8 @@ import './App.css';
 import { Graph } from './data';
 import SvgGraphEl from './SvgGraphEl';
 import GraphContainer from './GraphContainer';
+import { staticParams } from './helpers/chart-counting';
+import { graphParams } from './helpers/chart-counting';
 
 const logo = require('./logo.svg');
 
@@ -14,19 +16,6 @@ class App extends React.Component<AppProps, {}> {
   render() {
     const { graphData } = this.props;
 
-    const containerStyle = {
-      height: 600,
-      width: 1200
-    };
-
-    const maxRect: Graph = graphData.reduce((prev: Graph, current: Graph) => (prev.value > current.value) ? prev : current);
-    const containerSpacer = 50; // svg nie wypłenia całej szerokości diva
-    const heightCalc = (containerStyle.height - containerSpacer / 2) / maxRect.value;
-    const widthCalc = (containerStyle.width - containerSpacer) / graphData.length;
-    const svgHeight = heightCalc * maxRect.value;
-    const svgWidth = widthCalc * graphData.length;
-    const textPositionCalc = 40;
-
     const divStyle = {
       height: 200,
       width: 200
@@ -35,13 +24,13 @@ class App extends React.Component<AppProps, {}> {
     const MapedSvgElements = graphData.map((element, index) =>
       (
         <SvgGraphEl 
-          xRect={(index + 0.25) * svgWidth / graphData.length}
-          yRect={svgHeight - element.value * heightCalc}
-          height={element.value * heightCalc}
-          width={svgWidth / graphData.length / 2}
-          xText={(index + 0.50) * svgWidth / graphData.length}
-          yTextValue={svgHeight - textPositionCalc}
-          yTextLabel={svgHeight + textPositionCalc}
+          xRect={(index + 0.25) * graphParams.svgWidth / graphData.length}
+          yRect={graphParams.svgHeight - element.value * graphParams.heightCalc}
+          height={element.value * graphParams.heightCalc}
+          width={graphParams.svgWidth / graphData.length / 2}
+          xText={(index + 0.50) * graphParams.svgWidth / graphData.length}
+          yTextValue={graphParams.svgHeight - staticParams.textPositionCalc}
+          yTextLabel={graphParams.svgHeight + staticParams.textPositionCalc}
           value={element.value}
           label={element.label}
         />
@@ -54,15 +43,15 @@ class App extends React.Component<AppProps, {}> {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <div className="Graph-container" style={containerStyle}>
+          <div className="Graph-container" style={{width: staticParams.containerWidth, height: staticParams.containerHeight}}>
           <h3 className="Graph-header">Nomination Tool</h3>
-          <svg className="position" width={svgWidth} height={svgHeight}>
+          <svg className="position" width={graphParams.svgWidth} height={graphParams.svgHeight}>
               {MapedSvgElements}
               <line 
                 x1="0" 
-                y1={svgHeight} 
-                x2={svgWidth}
-                y2={svgHeight}
+                y1={graphParams.svgHeight} 
+                x2={graphParams.svgWidth}
+                y2={graphParams.svgHeight}
                 strokeWidth="1"
                 stroke="#878383"
               />
