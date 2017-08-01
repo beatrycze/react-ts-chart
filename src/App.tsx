@@ -21,7 +21,7 @@ class App extends React.Component<AppProps, {}> {
       width: 200
     };
 
-    const graphParams = calcGraphParams(staticParams);
+    const graphParams = calcGraphParams(staticParams, graphData);
     
     const MapedSvgElements = graphData.map((element, index) =>
       (
