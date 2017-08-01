@@ -4,7 +4,7 @@ import { Graph } from './fake/data';
 import SvgGraphEl from './SvgGraphEl';
 import GraphContainer from './GraphContainer';
 import { staticParams } from './graph-params';
-import { calcGraphParams } from './chart/chart-size';
+import { getChartSize } from './chart/chart-size';
 
 const logo = require('./logo.svg');
 
@@ -21,7 +21,7 @@ class App extends React.Component<AppProps, {}> {
       width: 200
     };
 
-    const graphParams = calcGraphParams(staticParams, graphData);
+    const graphParams = getChartSize(staticParams, graphData);
     
     const MapedSvgElements = graphData.map((element, index) =>
       (
