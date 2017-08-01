@@ -29,29 +29,28 @@ class App extends React.Component<AppProps, {}> {
       width: 1200
     };
 
-    const containerOffset = 50; // svg nie wypłenia całego diva
-    const svgPadding = 100;
-    const heightCalc = containerStyle.height / maxRect.value;
-    console.log(heightCalc);
-    const widthCalc = (containerStyle.width - containerOffset) / graphData.length;
-    console.log(widthCalc);
-    const svgHeight = heightCalc * maxRect.value - svgPadding;
+    const containerSpacer = 50; // svg nie wypłenia całej szerokości diva
+    const heightCalc = (containerStyle.height - containerSpacer / 2) / maxRect.value;
+    // console.log(heightCalc);
+    const widthCalc = (containerStyle.width - containerSpacer) / graphData.length;
+    // console.log(widthCalc);
+    const svgHeight = heightCalc * maxRect.value;
     const svgWidth = widthCalc * graphData.length;
+
 
     const divStyle = {
       height: 200,
-      width: 200,
-      marginTop: 20
+      width: 200
     };
 
     const MapedSvgElements = graphData.map((element, index) =>
       (
         <SvgGraphEl 
-          xRect={svgWidth / graphData.length * index + (graphData.length / 2)}
+          xRect={(index + 0.25) * svgWidth / graphData.length}
           yRect={svgHeight - element.value * heightCalc}
           height={element.value * heightCalc}
           width={svgWidth / graphData.length / 2}
-          xText={index * svgWidth / graphData.length} 
+          xText={(index + 0.50) * svgWidth / graphData.length}
           yTextValue={svgHeight - xTextValueCalc}
           yTextLabel={svgHeight + yTextLabelCalc}
           value={element.value}
@@ -75,7 +74,7 @@ class App extends React.Component<AppProps, {}> {
                 y1={svgHeight} 
                 x2={svgWidth}
                 y2={svgHeight}
-                strokeWidth="0.2"
+                strokeWidth="1"
                 stroke="#878383"
               />
           </svg>

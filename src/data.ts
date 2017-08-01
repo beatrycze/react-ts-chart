@@ -5,7 +5,7 @@ export type Graph = {
 
 export const staticData: Graph[] = [
     {
-        value: 2,
+        value: 20,
         label: 'Top'
     },
     {
@@ -25,15 +25,15 @@ export const staticData: Graph[] = [
         label: 'Next'
     },
     {
+        value: 10,
+        label: 'Next'
+    },
+    {
+        value: 2,
+        label: 'Next'
+    },
+    {
         value: 9,
-        label: 'Next'
-    },
-    {
-        value: 3,
-        label: 'Next'
-    },
-    {
-        value: 8,
         label: 'Next'
     },
     {
@@ -41,7 +41,7 @@ export const staticData: Graph[] = [
         label: 'Next'
     },
     {
-        value: 5,
+        value: 8,
         label: 'Next'
     }
 ];
