@@ -3,8 +3,8 @@ import './App.css';
 import { Graph } from './data';
 import SvgGraphEl from './SvgGraphEl';
 import GraphContainer from './GraphContainer';
-import { staticParams } from './helpers/chart-counting';
-import { graphParams } from './helpers/chart-counting';
+import { staticParams } from './graph-params';
+import { calcGraphParams } from './helpers/chart-counting';
 
 const logo = require('./logo.svg');
 
@@ -21,6 +21,8 @@ class App extends React.Component<AppProps, {}> {
       width: 200
     };
 
+    const graphParams = calcGraphParams(staticParams);
+    
     const MapedSvgElements = graphData.map((element, index) =>
       (
         <SvgGraphEl 
