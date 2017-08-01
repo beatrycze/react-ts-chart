@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './App.css';
-import { Graph } from './chart/chart';
-import SvgGraphEl from './SvgGraphEl';
-import GraphContainer from './GraphContainer';
-import { staticParams } from './graph-params';
-import { getChartSize } from './chart/chart-size';
+import { Graph } from '../chart/chart';
+import SvgGraphEl from '../components/SvgGraphEl';
+import GraphContainer from '../components/GraphContainer';
+import { chartParams } from '../chart/chart-params';
+import { getChartSize } from '../chart/chart-size';
 
-const logo = require('./logo.svg');
+const logo = require('../logo.svg');
 
 interface AppProps {
   graphData: Graph[];
@@ -21,7 +21,7 @@ class App extends React.Component<AppProps, {}> {
       width: 200
     };
 
-    const graphParams = getChartSize(staticParams, graphData);
+    const graphParams = getChartSize(chartParams, graphData);
     
     const MapedSvgElements = graphData.map((element, index) =>
       (
@@ -31,8 +31,8 @@ class App extends React.Component<AppProps, {}> {
           height={element.value * graphParams.heightCalc}
           width={graphParams.svg.width / graphData.length / 2}
           xText={(index + 0.50) * graphParams.svg.width / graphData.length}
-          yTextValue={graphParams.svg.height - staticParams.textPositionCalc}
-          yTextLabel={graphParams.svg.height + staticParams.textPositionCalc}
+          yTextValue={graphParams.svg.height - chartParams.textPositionCalc}
+          yTextLabel={graphParams.svg.height + chartParams.textPositionCalc}
           value={element.value}
           label={element.label}
         />
@@ -45,7 +45,7 @@ class App extends React.Component<AppProps, {}> {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-          <div className="Graph-container" style={{width: staticParams.width, height: staticParams.height}}>
+          <div className="Graph-container" style={{width: chartParams.width, height: chartParams.height}}>
           <h3 className="Graph-header">Nomination Tool</h3>
           <svg className="position" width={graphParams.svg.width} height={graphParams.svg.height}>
               {MapedSvgElements}
@@ -60,7 +60,11 @@ class App extends React.Component<AppProps, {}> {
           </svg>
         </div>
 
-        <GraphContainer message="Lorem ipsum..." style={divStyle} width={divStyle.width} height={divStyle.height}/>
+        <GraphContainer
+          message="Lorem ipsum..." 
+          style={divStyle}
+          width={divStyle.width}
+          height={divStyle.height}/>
       </div>
     );
   }
