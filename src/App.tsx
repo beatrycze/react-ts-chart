@@ -14,29 +14,18 @@ class App extends React.Component<AppProps, {}> {
   render() {
     const { graphData } = this.props;
 
-    // const calc = 100;
-    const maxRect: Graph = graphData.reduce((prev: Graph, current: Graph) => (prev.value > current.value) ? prev : current);
-    // const svgHeight = maxRect.value * calc;
-    // const svgWidth = 150 * graphData.length + 50;
-
-    // const xRectPosition = 50;
-    // const xRectCalc = 150;
-    const xTextValueCalc = 40;
-    const yTextLabelCalc = 40;
-
     const containerStyle = {
       height: 600,
       width: 1200
     };
 
+    const maxRect: Graph = graphData.reduce((prev: Graph, current: Graph) => (prev.value > current.value) ? prev : current);
     const containerSpacer = 50; // svg nie wypłenia całej szerokości diva
     const heightCalc = (containerStyle.height - containerSpacer / 2) / maxRect.value;
-    // console.log(heightCalc);
     const widthCalc = (containerStyle.width - containerSpacer) / graphData.length;
-    // console.log(widthCalc);
     const svgHeight = heightCalc * maxRect.value;
     const svgWidth = widthCalc * graphData.length;
-
+    const textPositionCalc = 40;
 
     const divStyle = {
       height: 200,
@@ -51,8 +40,8 @@ class App extends React.Component<AppProps, {}> {
           height={element.value * heightCalc}
           width={svgWidth / graphData.length / 2}
           xText={(index + 0.50) * svgWidth / graphData.length}
-          yTextValue={svgHeight - xTextValueCalc}
-          yTextLabel={svgHeight + yTextLabelCalc}
+          yTextValue={svgHeight - textPositionCalc}
+          yTextLabel={svgHeight + textPositionCalc}
           value={element.value}
           label={element.label}
         />

@@ -10,7 +10,7 @@ interface Props {
 
 class GraphContainerComponent extends React.Component<Props, {}> {
   render() {
-    console.log(this);
+    // console.log(this);
     return (
       <div style={this.props.style}>
         <Circle rCircle={this.props.width / 4}/>
