@@ -3,9 +3,16 @@ import { staticData } from '../data';
 
 const maxRect: Graph = staticData.reduce((prev: Graph, current: Graph) => (prev.value > current.value) ? prev : current);
 
-export function calcGraphParams(container: { containerHeight: number, containerWidth: number, containerSpacer: number, textPositionCalc: number}) {
-    const heightCalc = (container.containerHeight - container.containerSpacer / 2) / maxRect.value;
-    const widthCalc = (container.containerWidth - container.containerSpacer) / staticData.length;
+interface ContainerSize { 
+    height: number;
+    width: number;
+    spacer: number;
+    textPositionCalc: number;
+}
+
+export function calcGraphParams(container: ContainerSize) {
+    const heightCalc = (container.height - container.spacer / 2) / maxRect.value;
+    const widthCalc = (container.width - container.spacer) / staticData.length;
     const svgHeight = heightCalc * maxRect.value;
     const svgWidth = widthCalc * staticData.length;
 

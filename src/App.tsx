@@ -45,7 +45,7 @@ class App extends React.Component<AppProps, {}> {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-          <div className="Graph-container" style={{width: staticParams.containerWidth, height: staticParams.containerHeight}}>
+          <div className="Graph-container" style={{width: staticParams.width, height: staticParams.height}}>
           <h3 className="Graph-header">Nomination Tool</h3>
           <svg className="position" width={graphParams.svgWidth} height={graphParams.svgHeight}>
               {MapedSvgElements}
