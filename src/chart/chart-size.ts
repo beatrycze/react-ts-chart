@@ -1,4 +1,4 @@
-import { Graph } from '../fake/data';
+import { Graph } from './chart';
 
 interface ContainerSize { 
     height: number;

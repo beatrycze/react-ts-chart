@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import { Graph } from './fake/data';
+import { Graph } from './chart/chart';
 import SvgGraphEl from './SvgGraphEl';
 import GraphContainer from './GraphContainer';
 import { staticParams } from './graph-params';

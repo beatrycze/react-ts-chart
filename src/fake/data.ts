@@ -1,7 +1,4 @@
-export type Graph = {
-    value: number;
-    label: string;
-};
+import { Graph } from '../chart/chart';
 
 export const staticData: Graph[] = [
     {
