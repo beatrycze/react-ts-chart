@@ -14,28 +14,29 @@ interface Props {
 
 class SvgChartElementComponent extends React.Component<Props, {}> {
   render() {
+    const { xRect, yRect, width, height, xText, yTextValue, yTextLabel, label } = this.props; // object destructuring
     return (
       <g>
         <rect
-          x={this.props.xRect}
-          y={this.props.yRect}
-          width={this.props.width}
-          height={this.props.height}
+          x={xRect}
+          y={yRect}
+          width={width}
+          height={height}
           fill="#3c66a8" 
         />
         <text
-          x={this.props.xText}
-          y={this.props.yTextValue}
+          x={xText}
+          y={yTextValue}
           textAnchor="middle"
         >
-          {this.props.value}
+          {xText}
         </text>
         <text
-          x={this.props.xText}
-          y={this.props.yTextLabel}
+          x={xText}
+          y={yTextLabel}
           textAnchor="middle"
         >
-          {this.props.label}
+          {label}
         </text>
       </g>
     );

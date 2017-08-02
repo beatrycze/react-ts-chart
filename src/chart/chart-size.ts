@@ -6,7 +6,16 @@ interface ContainerSize {
   spacer: number;
 }
 
-export function getChartSize(container: ContainerSize, graphs: Column[]) {
+type ChartSize = {
+  heightCalc: number;
+  widthCalc: number;
+  svg: {
+    height: number;
+    width: number;
+  };
+};
+
+export function getChartSize(container: ContainerSize, graphs: Column[]): ChartSize  {
   const maxRect: Column = graphs.reduce(
       (prev: Column, current: Column) => (prev.value > current.value) ? prev : current
   );
