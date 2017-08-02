@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
 import { Graph } from '../chart/chart';
-import SvgGraphEl from '../components/SvgGraphEl';
-import GraphContainer from '../components/GraphContainer';
+import SvgGraphEl from './SvgGraphEl';
+import GraphContainer from './GraphContainer';
 import { chartParams } from '../chart/chart-params';
 import { getChartSize } from '../chart/chart-size';
 
@@ -64,7 +64,8 @@ class App extends React.Component<AppProps, {}> {
           message="Lorem ipsum..." 
           style={divStyle}
           width={divStyle.width}
-          height={divStyle.height}/>
+          height={divStyle.height}
+        />
       </div>
     );
   }
