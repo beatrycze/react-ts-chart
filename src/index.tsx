@@ -6,7 +6,7 @@ import './index.css';
 import { staticData } from './fake/data';
 
 ReactDOM.render(
-  <App graphData={staticData} />,
+  <App chartData={staticData} />,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();

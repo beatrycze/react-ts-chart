@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Circle from './Test';
+import Circle from './TestEl';
 
 interface Props {
   message: string;
@@ -8,7 +8,7 @@ interface Props {
   height: number; // height from container div...
 }
 
-class GraphContainerComponent extends React.Component<Props, {}> {
+class TestContainerComponent extends React.Component<Props, {}> {
   render() {
     // console.log(this);
     return (
@@ -20,4 +20,4 @@ class GraphContainerComponent extends React.Component<Props, {}> {
   }
 }
 
-export default GraphContainerComponent;
+export default TestContainerComponent;

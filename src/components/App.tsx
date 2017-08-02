@@ -1,36 +1,31 @@
 import * as React from 'react';
 import './App.css';
-import { Graph } from '../chart/chart';
-import SvgGraphEl from './SvgGraphEl';
-import GraphContainer from './GraphContainer';
+import { Column } from '../chart/column';
+import SvgChartEl from './SvgChartEl';
+import TestContainer from './TestContainer';
 import { chartParams } from '../chart/chart-params';
 import { getChartSize } from '../chart/chart-size';
 
 const logo = require('../logo.svg');
 
 interface AppProps {
-  graphData: Graph[];
+  chartData: Column[];
 }
 
 class App extends React.Component<AppProps, {}> {
   render() {
-    const { graphData } = this.props;
+    const { chartData } = this.props;
 
-    const divStyle = {
-      height: 200,
-      width: 200
-    };
-
-    const graphParams = getChartSize(chartParams, graphData);
+    const graphParams = getChartSize(chartParams, chartData);
     
-    const MapedSvgElements = graphData.map((element, index) =>
+    const MapedSvgElements = chartData.map((element, index) =>
       (
-        <SvgGraphEl 
-          xRect={(index + 0.25) * graphParams.svg.width / graphData.length}
+        <SvgChartEl
+          xRect={(index + 0.25) * graphParams.svg.width / chartData.length}
           yRect={graphParams.svg.height - element.value * graphParams.heightCalc}
           height={element.value * graphParams.heightCalc}
-          width={graphParams.svg.width / graphData.length / 2}
-          xText={(index + 0.50) * graphParams.svg.width / graphData.length}
+          width={graphParams.svg.width / chartData.length / 2}
+          xText={(index + 0.50) * graphParams.svg.width / chartData.length}
           yTextValue={graphParams.svg.height - chartParams.textPositionCalc}
           yTextLabel={graphParams.svg.height + chartParams.textPositionCalc}
           value={element.value}
@@ -39,6 +34,11 @@ class App extends React.Component<AppProps, {}> {
       )      
     );
 
+    const divStyle = {
+      height: 200,
+      width: 200
+    };
+
     return (
       <div className="App">
         <div className="App-header">
@@ -46,21 +46,21 @@ class App extends React.Component<AppProps, {}> {
           <h2>Welcome to React</h2>
         </div>
           <div className="Graph-container" style={{width: chartParams.width, height: chartParams.height}}>
-          <h3 className="Graph-header">Nomination Tool</h3>
-          <svg className="position" width={graphParams.svg.width} height={graphParams.svg.height}>
-              {MapedSvgElements}
-              <line 
-                x1="0" 
-                y1={graphParams.svg.height} 
-                x2={graphParams.svg.width}
-                y2={graphParams.svg.height}
-                strokeWidth="1"
-                stroke="#878383"
-              />
-          </svg>
-        </div>
+            <h3 className="Graph-header">Nomination Tool</h3>
+            <svg className="position" width={graphParams.svg.width} height={graphParams.svg.height}>
+                {MapedSvgElements}
+                <line
+                  x1="0"
+                  y1={graphParams.svg.height}
+                  x2={graphParams.svg.width}
+                  y2={graphParams.svg.height}
+                  strokeWidth="1"
+                  stroke="#878383"
+                />
+            </svg>
+          </div>
 
-        <GraphContainer
+        <TestContainer
           message="Lorem ipsum..." 
           style={divStyle}
           width={divStyle.width}

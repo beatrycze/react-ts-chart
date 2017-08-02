@@ -12,7 +12,7 @@ interface Props {
   label: string;
 }
 
-class SvgGraphElComponent extends React.Component<Props, {}> {
+class SvgChartElComponent extends React.Component<Props, {}> {
   render() {
     return (
       <g>
@@ -42,4 +42,4 @@ class SvgGraphElComponent extends React.Component<Props, {}> {
   }
 }
 
-export default SvgGraphElComponent;
+export default SvgChartElComponent;

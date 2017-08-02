@@ -1,6 +1,6 @@
-import { Graph } from '../chart/chart';
+import { Column } from '../chart/column';
 
-export const staticData: Graph[] = [
+export const staticData: Column[] = [
     {
         value: 20,
         label: 'Top'

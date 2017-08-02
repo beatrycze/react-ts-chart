@@ -1,15 +1,14 @@
-import { Graph } from './chart';
+import { Column } from './column';
 
 interface ContainerSize { 
     height: number;
     width: number;
     spacer: number;
-    textPositionCalc: number;
 }
 
-export function getChartSize(container: ContainerSize, graphs: Graph[]) {
-    const maxRect: Graph = graphs.reduce(
-        (prev: Graph, current: Graph) => (prev.value > current.value) ? prev : current
+export function getChartSize(container: ContainerSize, graphs: Column[]) {
+    const maxRect: Column = graphs.reduce(
+        (prev: Column, current: Column) => (prev.value > current.value) ? prev : current
     );
     const heightCalc: number = (container.height - container.spacer / 2) / maxRect.value;
     const widthCalc: number = (container.width - container.spacer) / graphs.length;

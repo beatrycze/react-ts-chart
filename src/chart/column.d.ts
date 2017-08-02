@@ -1,4 +1,4 @@
-export type Graph = {
+export type Column = {
     value: number;
     label: string;
 };
