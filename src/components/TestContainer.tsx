@@ -12,8 +12,8 @@ class TestContainerComponent extends React.Component<Props, {}> {
   render() {
     // console.log(this);
     return (
-      <div style={this.props.style}>
-        <Circle rCircle={this.props.width / 4}/>
+      <div className="Test-container">
+        <Circle rCircle={this.props.width / 4}/> {/* TODO Passing current (depeded on screen size) width from <div>. How? */}
         {this.props.message}
       </div>
     );

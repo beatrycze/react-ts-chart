@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import './Media.css';
 import { Column } from '../chart/column';
 import SvgChartElement from './SvgChartElement';
 import TestContainer from './TestContainer';
