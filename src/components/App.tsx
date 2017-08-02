@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { Column } from '../chart/column';
-import SvgChartEl from './SvgChartEl';
+import SvgChartElement from './SvgChartElement';
 import TestContainer from './TestContainer';
 import { chartParams } from '../chart/chart-params';
 import { getChartSize } from '../chart/chart-size';
@@ -16,18 +16,18 @@ class App extends React.Component<AppProps, {}> {
   render() {
     const { chartData } = this.props;
 
-    const graphParams = getChartSize(chartParams, chartData);
+    const chartSize = getChartSize(chartParams, chartData);
     
-    const MapedSvgElements = chartData.map((element, index) =>
+    const MapedSvgChartElements = chartData.map((element, index) =>
       (
-        <SvgChartEl
-          xRect={(index + 0.25) * graphParams.svg.width / chartData.length}
-          yRect={graphParams.svg.height - element.value * graphParams.heightCalc}
-          height={element.value * graphParams.heightCalc}
-          width={graphParams.svg.width / chartData.length / 2}
-          xText={(index + 0.50) * graphParams.svg.width / chartData.length}
-          yTextValue={graphParams.svg.height - chartParams.textPositionCalc}
-          yTextLabel={graphParams.svg.height + chartParams.textPositionCalc}
+        <SvgChartElement
+          xRect={(index + 0.25) * chartSize.svg.width / chartData.length}
+          yRect={chartSize.svg.height - element.value * chartSize.heightCalc}
+          height={element.value * chartSize.heightCalc}
+          width={chartSize.svg.width / chartData.length / 2}
+          xText={(index + 0.50) * chartSize.svg.width / chartData.length}
+          yTextValue={chartSize.svg.height - chartParams.textPositionCalc}
+          yTextLabel={chartSize.svg.height + chartParams.textPositionCalc}
           value={element.value}
           label={element.label}
         />
@@ -45,15 +45,15 @@ class App extends React.Component<AppProps, {}> {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-          <div className="Graph-container" style={{width: chartParams.width, height: chartParams.height}}>
-            <h3 className="Graph-header">Nomination Tool</h3>
-            <svg className="position" width={graphParams.svg.width} height={graphParams.svg.height}>
-                {MapedSvgElements}
+          <div className="Chart-container" style={{width: chartParams.width, height: chartParams.height}}>
+            <h3 className="Chart-header">Nomination Tool</h3>
+            <svg className="Chart-position" width={chartSize.svg.width} height={chartSize.svg.height}>
+                {MapedSvgChartElements}
                 <line
                   x1="0"
-                  y1={graphParams.svg.height}
-                  x2={graphParams.svg.width}
-                  y2={graphParams.svg.height}
+                  y1={chartSize.svg.height}
+                  x2={chartSize.svg.width}
+                  y2={chartSize.svg.height}
                   strokeWidth="1"
                   stroke="#878383"
                 />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Circle from './TestEl';
+import Circle from './TestElement';
 
 interface Props {
   message: string;
