@@ -16,6 +16,11 @@ class TestContainerComponent extends React.Component<Props, {}> {
     console.log(containerSize);
     console.log(containerSize.height, containerSize.width);
   }
+  
+  // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
+  setRef = (node: any) => {
+    this.node = node
+  }
 
   componentDidMount() {
     if (this.node) {
@@ -27,7 +32,8 @@ class TestContainerComponent extends React.Component<Props, {}> {
     console.log(this);
 
     return (
-      <div className="Test-container" ref={(node) => { this.node = node; }}>
+      // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
+      <div className="Test-container" ref={this.setRef}>
         <Circle 
           rCircle={this.props.width / 4}
         /> {/* TODO Passing current (depeded on screen size) width from <div>. How? */}
