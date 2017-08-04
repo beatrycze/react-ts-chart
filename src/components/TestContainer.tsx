@@ -11,36 +11,20 @@ interface Props {
 class TestContainerComponent extends React.Component<Props, {}> {
   private node: any;
 
-  handleSomething() {
-    console.log(this.node);
-  }
-
   measure = () => {
-    const containerSize: {} = this.node.getBoundingClientRect();
+    const containerSize: {width: number, height: number} = this.node.getBoundingClientRect();
     console.log(containerSize);
+    console.log(containerSize.height, containerSize.width);
   }
-  
-  // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
-  // doesn't work
-  // setRef = (node) => {
-  //   this.node = node
-  // }
 
   componentDidMount() {
     if (this.node) {
-      this.measure(); // TODO how to get access to element width & height
+      this.measure();
     }
   }
 
   render() {
     console.log(this);
-    console.log(this.refs);
-    // console.log(this.refs.size); // undefined
-    // console.log(this.refs.size.clientWidth); // can not find this property, compilation errror
-    // console.log(this.node.clientWidth); // can not find this property, compilation errror
-    // console.log(this.node.childNodes.length); // can not find this property, compilation errror
-
-    // this.measure();
 
     return (
       <div className="Test-container" ref={(node) => { this.node = node; }}>
