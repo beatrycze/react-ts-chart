@@ -35,11 +35,6 @@ class App extends React.Component<AppProps, {}> {
       )      
     );
 
-    const divStyle = {
-      height: 200,
-      width: 200
-    };
-
     return (
       <div className="App">
         <div className="App-header">
@@ -63,9 +58,6 @@ class App extends React.Component<AppProps, {}> {
 
         <TestContainer
           message="Lorem ipsum..." 
-          style={divStyle}
-          width={divStyle.width}
-          height={divStyle.height}
         />
       </div>
     );

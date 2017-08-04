@@ -3,9 +3,6 @@ import Circle from './TestElement';
 
 interface Props {
   message: string;
-  style: {};
-  width: number; // width from container div; refer to const divStyle from App.tsx
-  height: number; // height from container div...
 }
 
 interface State {
