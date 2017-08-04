@@ -11,26 +11,25 @@ interface Props {
 class TestContainerComponent extends React.Component<Props, {}> {
   private node: any;
 
-  measure = () => {
-    const containerSize: {width: number, height: number} = this.node.getBoundingClientRect();
-    console.log(containerSize);
-    console.log(containerSize.height, containerSize.width);
-  }
-  
-  // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
-  setRef = (node: any) => {
-    this.node = node
-  }
-
   componentDidMount() {
     if (this.node) {
       this.measure();
     }
   }
 
+  measure = () => {
+    let containerSize: {width: number, height: number} = this.node.getBoundingClientRect();
+    console.log(containerSize);
+    console.log(containerSize.height, containerSize.width);
+  }
+  
+  // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
+  setRef = (node: any) => { // TODO How to declare type different than any
+    this.node = node
+  }
+
   render() {
     console.log(this);
-
     return (
       // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
       <div className="Test-container" ref={this.setRef}>
