@@ -25,13 +25,25 @@ class TestContainerComponent extends React.Component<Props, State> {
     if (this.node) {
       this.measure();
     }
+    // needed, because screen resize doesn't trigger rerendering React Component
+    window.addEventListener('resize', () => this.measure());
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', () => this.measure());
   }
 
   measure = () => {
     let containerSize: {width: number, height: number} = this.node.getBoundingClientRect();
     console.log(containerSize);
     console.log(containerSize.height, containerSize.width);
-    this.setState(previousState => {
+    this.setState(
+      // alternative with spread operator:
+      // {
+      // ...this.state,
+      // width: containerSize.width,
+      // height: containerSize.height
+      previousState => {
       return { width: containerSize.width, height: containerSize.height };
     });
   }
@@ -49,7 +61,7 @@ class TestContainerComponent extends React.Component<Props, State> {
       <div className="Test-container" ref={this.setRef}>
         <Circle 
           rCircle={this.state.width / 30}
-        /> {/* TODO Passing current (depeded on screen size) width from <div>. How? */}
+        />
         {this.props.message}
       </div>
     );
