@@ -8,8 +8,21 @@ interface Props {
   height: number; // height from container div...
 }
 
-class TestContainerComponent extends React.Component<Props, {}> {
+interface State {
+  width: number;
+  height: number;
+}
+
+class TestContainerComponent extends React.Component<Props, State> {
   private node: any;
+
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      width: 0,
+      height: 0,
+    };
+  }
 
   componentDidMount() {
     if (this.node) {
@@ -21,6 +34,9 @@ class TestContainerComponent extends React.Component<Props, {}> {
     let containerSize: {width: number, height: number} = this.node.getBoundingClientRect();
     console.log(containerSize);
     console.log(containerSize.height, containerSize.width);
+    this.setState(previousState => {
+      return { width: containerSize.width, height: containerSize.height };
+    });
   }
   
   // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
@@ -30,11 +46,12 @@ class TestContainerComponent extends React.Component<Props, {}> {
 
   render() {
     console.log(this);
+    console.log(this.state.height);
     return (
       // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
       <div className="Test-container" ref={this.setRef}>
         <Circle 
-          rCircle={this.props.width / 4}
+          rCircle={this.state.width / 30}
         /> {/* TODO Passing current (depeded on screen size) width from <div>. How? */}
         {this.props.message}
       </div>
