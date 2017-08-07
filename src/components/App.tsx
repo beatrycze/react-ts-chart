@@ -87,6 +87,7 @@ class App extends React.Component<AppProps, AppState> {
     };
 
     const MapedSvgChartElements = chartData.map( (element, index) => {
+      let key = index; // Each child in an array or iterator should have a unique "key" prop.
       let xRect = (index + CHART_XRECT_CALC) * svgCapacity;
       let yRect = svgHeight - element.value * heightCalc;
       let height = element.value * heightCalc;
@@ -94,6 +95,7 @@ class App extends React.Component<AppProps, AppState> {
 
       return (
         <SvgChartElement
+          key={key}
           xRect={xRect}
           yRect={yRect}
           height={height}
