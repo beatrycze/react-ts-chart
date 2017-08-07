@@ -84,14 +84,14 @@ class App extends React.Component<AppProps, AppState> {
     );
 
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div className="app">
+        <div className="app-header">
+          <img src={logo} className="app-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-          <div className="Chart-container" ref={this.setRef}>
-            <h3 className="Chart-header">Nomination Tool</h3>
-            <svg className="Svg-position" width={chartSize.svg.width} height={chartSize.svg.height}>
+          <div className="chart-container" ref={this.setRef}>
+            <h3 className="chart-header">Nomination Tool</h3>
+            <svg className="svg-position" width={chartSize.svg.width} height={chartSize.svg.height}>
                 {MapedSvgChartElements}
                 <line
                   x1="0"
