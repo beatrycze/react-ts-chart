@@ -9,6 +9,7 @@ import { chartElementParams } from '../chart/chart-element-params';
 import { getChartSize } from '../chart/chart-size';
 
 const logo = require('../logo.svg');
+const CHART_SPACER = 122;
 
 interface AppProps {
   chartData: Column[];
@@ -17,9 +18,11 @@ interface AppProps {
 interface AppState {
   width: number;
   height: number;
+  // node: HTMLElement;
 }
 
 class App extends React.Component<AppProps, AppState> {
+  // TODO ? potem mutuję tę zmienną (źle!)
   private node: any;
 
   constructor(props: any) {
@@ -43,11 +46,10 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   measure = () => {
-    let containerSize: {width: number, height: number} = this.node.getBoundingClientRect();
-    this.setState(
-      previousState => {
-      return { width: containerSize.width, height: containerSize.height };
-    });
+    // 2 zmienne zamiast obiektu
+    const { width, height } = this.node.getBoundingClientRect();
+    // setState bez użycia callbacka
+    this.setState( { width, height } );
   }
 
   // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
@@ -59,9 +61,8 @@ class App extends React.Component<AppProps, AppState> {
     const { chartData } = this.props;
 
     const chartParams = {
-      height: this.state.height,
-      width: this.state.width,
-      spacer: 122, // svg nie wypełnia całej szerokości diva
+      ...this.state,
+      spacer: CHART_SPACER, // svg nie wypełnia całej szerokości diva
     };
 
     const chartSize = getChartSize(chartParams, chartData);
