@@ -50,7 +50,7 @@ class TestContainerComponent extends React.Component<Props, State> {
   
   // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
   setRef = (node: any) => { // TODO How to declare type different than any
-    this.node = node
+    this.node = node;
   }
 
   render() {

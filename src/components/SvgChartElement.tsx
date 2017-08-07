@@ -14,7 +14,8 @@ interface Props {
 
 class SvgChartElementComponent extends React.Component<Props, {}> {
   render() {
-    const { xRect, yRect, width, height, xText, yTextValue, yTextLabel, value, label } = this.props; // object destructuring
+    // object destructuring
+    const { xRect, yRect, width, height, xText, yTextValue, yTextLabel, value, label } = this.props;
     return (
       <g>
         <rect

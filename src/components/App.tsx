@@ -5,6 +5,7 @@ import { Column } from '../chart/column';
 import SvgChartElement from './SvgChartElement';
 import TestContainer from './TestContainer';
 // import { chartParams } from '../chart/chart-params';
+import { chartElementParams } from '../chart/chart-element-params';
 import { getChartSize } from '../chart/chart-size';
 
 const logo = require('../logo.svg');
@@ -61,7 +62,6 @@ class App extends React.Component<AppProps, AppState> {
       height: this.state.height,
       width: this.state.width,
       spacer: 122, // svg nie wypełnia całej szerokości diva
-      textPositionCalc: 40
     };
 
     const chartSize = getChartSize(chartParams, chartData);
@@ -69,13 +69,13 @@ class App extends React.Component<AppProps, AppState> {
     const MapedSvgChartElements = chartData.map((element, index) =>
       (
         <SvgChartElement
-          xRect={(index + 0.25) * chartSize.svg.width / chartData.length}
+          xRect={(index + chartElementParams.xRectCalc) * chartSize.svg.width / chartData.length}
           yRect={chartSize.svg.height - element.value * chartSize.heightCalc}
           height={element.value * chartSize.heightCalc}
-          width={chartSize.svg.width / chartData.length / 2}
-          xText={(index + 0.50) * chartSize.svg.width / chartData.length}
-          yTextValue={chartSize.svg.height - chartParams.textPositionCalc}
-          yTextLabel={chartSize.svg.height + chartParams.textPositionCalc}
+          width={chartSize.svg.width / chartData.length / chartElementParams.widthCalc}
+          xText={(index + chartElementParams.xTextCalc) * chartSize.svg.width / chartData.length}
+          yTextValue={chartSize.svg.height - chartParams.spacer / chartElementParams.yTextValueCalc}
+          yTextLabel={chartSize.svg.height + chartParams.spacer / chartElementParams.yTextLabelCalc}
           value={element.value}
           label={element.label}
         />
