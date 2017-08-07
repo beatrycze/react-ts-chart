@@ -19,10 +19,12 @@ export function getChartSize(container: ContainerSize, graphs: Column[]): ChartS
   const maxRect: Column = graphs.reduce(
       (prev: Column, current: Column) => (prev.value > current.value) ? prev : current
   );
-  const heightCalc: number = (container.height - container.spacer / 2) / maxRect.value;
+  const heightCalc: number = (container.height - container.spacer) / maxRect.value;
   const widthCalc: number = (container.width - container.spacer) / graphs.length;
   const svgHeight: number = heightCalc * maxRect.value;
   const svgWidth: number = widthCalc * graphs.length;
+
+  console.log(heightCalc);
 
   return {
       heightCalc: heightCalc,

@@ -35,8 +35,8 @@ class TestContainerComponent extends React.Component<Props, State> {
 
   measure = () => {
     let containerSize: {width: number, height: number} = this.node.getBoundingClientRect();
-    console.log(containerSize);
-    console.log(containerSize.height, containerSize.width);
+    // console.log(containerSize);
+    // console.log(containerSize.height, containerSize.width);
     this.setState(
       // alternative with spread operator:
       // {
@@ -54,11 +54,11 @@ class TestContainerComponent extends React.Component<Props, State> {
   }
 
   render() {
-    console.log(this);
-    console.log(this.state.height);
+    // console.log(this);
+    // console.log(this.state.height);
     return (
       // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
-      <div className="Test-container" ref={this.setRef}>
+      <div className="Chart-container" ref={this.setRef}>
         <Circle 
           rCircle={this.state.width / 30}
         />
