@@ -5,11 +5,22 @@ import { Column } from '../chart/column';
 import SvgChartElement from './SvgChartElement';
 import TestContainer from './TestContainer';
 // import { chartParams } from '../chart/chart-params';
-import { chartElementParams } from '../chart/chart-element-params';
+// import { chartElementParams } from '../chart/chart-element-params';
 import { getChartSize } from '../chart/chart-size';
 
 const logo = require('../logo.svg');
-const CHART_SPACER = 122;
+
+const CHART_SPACER = 122; // svg nie wypełnia całej szerokości diva
+
+const CHART_XRECT_CALC = 0.25;
+const CHART_WIDTH_CALC = 2;
+const CHART_XTEXT_CALC = 0.50;
+const CHART_YTEXT_CALC = 4;
+const CHART_YTEXT_LABEL_CALC = 3;
+
+const CHART_LINE_X1 = '0';
+const CHART_LINE_STROKE_WIDTH = '1';
+const CHART_LINE_STROKE_COLOR = '#878383';
 
 interface AppProps {
   chartData: Column[];
@@ -54,7 +65,7 @@ class App extends React.Component<AppProps, AppState> {
 
   // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
   setRef = (node: any) => { // TODO How to declare type different than any
-    this.node = node
+    this.node = node;
   }
 
   render() {
@@ -62,26 +73,39 @@ class App extends React.Component<AppProps, AppState> {
 
     const chartParams = {
       ...this.state,
-      spacer: CHART_SPACER, // svg nie wypełnia całej szerokości diva
+      spacer: CHART_SPACER,
     };
 
-    const chartSize = getChartSize(chartParams, chartData);
-    
-    const MapedSvgChartElements = chartData.map((element, index) =>
-      (
+    const { heightCalc, svgHeight, svgWidth } = getChartSize(chartParams, chartData);
+
+    const svgCapacity = svgWidth / chartData.length;
+
+    const chartElementParams = {
+      width: svgCapacity / CHART_WIDTH_CALC,
+      yTextValue: svgHeight - chartParams.spacer / CHART_YTEXT_CALC,
+      yTextLabel: svgHeight + chartParams.spacer / CHART_YTEXT_LABEL_CALC
+    };
+
+    const MapedSvgChartElements = chartData.map( (element, index) => {
+      let xRect = (index + CHART_XRECT_CALC) * svgCapacity;
+      let yRect = svgHeight - element.value * heightCalc;
+      let height = element.value * heightCalc;
+      let xText = (index + CHART_XTEXT_CALC) * svgCapacity;
+
+      return (
         <SvgChartElement
-          xRect={(index + chartElementParams.xRectCalc) * chartSize.svg.width / chartData.length}
-          yRect={chartSize.svg.height - element.value * chartSize.heightCalc}
-          height={element.value * chartSize.heightCalc}
-          width={chartSize.svg.width / chartData.length / chartElementParams.widthCalc}
-          xText={(index + chartElementParams.xTextCalc) * chartSize.svg.width / chartData.length}
-          yTextValue={chartSize.svg.height - chartParams.spacer / chartElementParams.yTextValueCalc}
-          yTextLabel={chartSize.svg.height + chartParams.spacer / chartElementParams.yTextLabelCalc}
+          xRect={xRect}
+          yRect={yRect}
+          height={height}
+          width={chartElementParams.width}
+          xText={xText}
+          yTextValue={chartElementParams.yTextValue}
+          yTextLabel={chartElementParams.yTextLabel}
           value={element.value}
           label={element.label}
         />
-      )      
-    );
+      );
+    });
 
     return (
       <div className="app">
@@ -91,15 +115,15 @@ class App extends React.Component<AppProps, AppState> {
         </div>
           <div className="chart-container" ref={this.setRef}>
             <h3 className="chart-header">Nomination Tool</h3>
-            <svg className="svg-position" width={chartSize.svg.width} height={chartSize.svg.height}>
+            <svg className="svg-position" width={svgWidth} height={svgHeight}>
                 {MapedSvgChartElements}
                 <line
-                  x1="0"
-                  y1={chartSize.svg.height}
-                  x2={chartSize.svg.width}
-                  y2={chartSize.svg.height}
-                  strokeWidth="1"
-                  stroke="#878383"
+                  x1={CHART_LINE_X1}
+                  y1={svgHeight}
+                  x2={svgWidth}
+                  y2={svgHeight}
+                  strokeWidth={CHART_LINE_STROKE_WIDTH}
+                  stroke={CHART_LINE_STROKE_COLOR}
                 />
             </svg>
           </div>

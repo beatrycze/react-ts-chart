@@ -9,10 +9,8 @@ interface ContainerSize {
 type ChartSize = {
   heightCalc: number;
   widthCalc: number;
-  svg: {
-    height: number;
-    width: number;
-  };
+  svgHeight: number;
+  svgWidth: number;
 };
 
 export function getChartSize(container: ContainerSize, graphs: Column[]): ChartSize  {
@@ -29,9 +27,7 @@ export function getChartSize(container: ContainerSize, graphs: Column[]): ChartS
   return {
     heightCalc: heightCalc,
     widthCalc: widthCalc,
-    svg: {
-      height: svgHeight,
-      width: svgWidth
-    }
+    svgHeight: svgHeight,
+    svgWidth: svgWidth
   };
 }
