@@ -4,8 +4,6 @@ import './Media.css';
 import { Column } from '../chart/column';
 import SvgChartElement from './SvgChartElement';
 import TestContainer from './TestContainer';
-// import { chartParams } from '../chart/chart-params';
-// import { chartElementParams } from '../chart/chart-element-params';
 import { getChartSize } from '../chart/chart-size';
 
 const logo = require('../logo.svg');
@@ -36,7 +34,7 @@ class App extends React.Component<AppProps, AppState> {
   // TODO ? potem mutuję tę zmienną (źle!)
   private node: any;
 
-  constructor(props: any) {
+  constructor(props: AppProps) {
     super(props);
     this.state = {
       width: 0,
@@ -87,11 +85,11 @@ class App extends React.Component<AppProps, AppState> {
     };
 
     const MapedSvgChartElements = chartData.map( (element, index) => {
-      let key = index; // Each child in an array or iterator should have a unique "key" prop.
-      let xRect = (index + CHART_XRECT_CALC) * svgCapacity;
-      let yRect = svgHeight - element.value * heightScale;
-      let height = element.value * heightScale;
-      let xText = (index + CHART_XTEXT_CALC) * svgCapacity;
+      const key = index; // Each child in an array or iterator should have a unique "key" prop.
+      const xRect = (index + CHART_XRECT_CALC) * svgCapacity;
+      const yRect = svgHeight - element.value * heightScale;
+      const height = element.value * heightScale;
+      const xText = (index + CHART_XTEXT_CALC) * svgCapacity;
 
       return (
         <SvgChartElement
