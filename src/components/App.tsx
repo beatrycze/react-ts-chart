@@ -76,7 +76,7 @@ class App extends React.Component<AppProps, AppState> {
       spacer: CHART_SPACER,
     };
 
-    const { heightCalc, svgHeight, svgWidth } = getChartSize(chartParams, chartData);
+    const { heightScale, svgHeight, svgWidth } = getChartSize(chartParams, chartData);
 
     const svgCapacity = svgWidth / chartData.length;
 
@@ -89,8 +89,8 @@ class App extends React.Component<AppProps, AppState> {
     const MapedSvgChartElements = chartData.map( (element, index) => {
       let key = index; // Each child in an array or iterator should have a unique "key" prop.
       let xRect = (index + CHART_XRECT_CALC) * svgCapacity;
-      let yRect = svgHeight - element.value * heightCalc;
-      let height = element.value * heightCalc;
+      let yRect = svgHeight - element.value * heightScale;
+      let height = element.value * heightScale;
       let xText = (index + CHART_XTEXT_CALC) * svgCapacity;
 
       return (

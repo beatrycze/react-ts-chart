@@ -58,7 +58,7 @@ class TestContainerComponent extends React.Component<Props, State> {
     // console.log(this.state.height);
     return (
       // https://medium.com/@kylpo/all-about-refs-e8d2546d052c
-      <div className="Chart-container" ref={this.setRef}>
+      <div className="chart-container" ref={this.setRef}>
         <Circle 
           rCircle={this.state.width / 30}
         />
