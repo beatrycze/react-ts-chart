@@ -93,6 +93,7 @@ class App extends React.Component<AppProps, AppState> {
       const yRect = svgHeight - element.value * heightScale;
       const height = element.value * heightScale;
       const xText = (index + CHART_XTEXT_CALC) * svgCapacity;
+      const yTickPosition = svgHeight - element.value * heightScale + 14; // TODO
 
       return (
         <SvgChartElement
@@ -106,6 +107,8 @@ class App extends React.Component<AppProps, AppState> {
           yTextLabel={chartElementParams.yTextLabel}
           value={element.value}
           label={element.label}
+          yTickPosition={yTickPosition}
+          yTick={element.value}
         />
       );
     });
