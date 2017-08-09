@@ -18,11 +18,10 @@ export function getChartSize(container: ContainerSize, graphs: Column[]): ChartS
   const maxRect: Column = graphs.reduce(
     (prev: Column, current: Column) => (prev.value > current.value) ? prev : current
   );
-
-  const heightScale: number = (container.height - container.spacer) / maxRect.value;
-  const widthScale: number = (container.width - container.spacer) / graphs.length;
-  const svgHeight: number = heightScale * maxRect.value;
-  const svgWidth: number = widthScale * graphs.length;
+  const svgHeight: number = (container.height - container.spacer);
+  const svgWidth: number = (container.width - container.spacer);
+  const heightScale: number = svgHeight / maxRect.value;
+  const widthScale: number = svgWidth / graphs.length;
 
   return {
     heightScale: heightScale,

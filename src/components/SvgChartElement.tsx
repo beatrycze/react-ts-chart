@@ -43,7 +43,7 @@ class SvgChartElementComponent extends React.Component<Props, {}> {
         </text>
         <text
           x='-30' //
-          y={yTickPosition} //
+          y={yTickPosition}
           textAnchor="middle"
         >
           {yTick}
