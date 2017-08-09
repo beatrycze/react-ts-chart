@@ -20,6 +20,9 @@ const CHART_LINE_X1 = '0';
 const CHART_LINE_STROKE_WIDTH = '1';
 const CHART_LINE_STROKE_COLOR = '#878383';
 
+const CHART_YLINE_Y1 = '0';
+const CHART_YLINE_X2 = '0';
+
 interface AppProps {
   chartData: Column[];
 }
@@ -121,6 +124,14 @@ class App extends React.Component<AppProps, AppState> {
                   x1={CHART_LINE_X1}
                   y1={svgHeight}
                   x2={svgWidth}
+                  y2={svgHeight}
+                  strokeWidth={CHART_LINE_STROKE_WIDTH}
+                  stroke={CHART_LINE_STROKE_COLOR}
+                />
+                <line
+                  x1={CHART_LINE_X1}
+                  y1={CHART_YLINE_Y1}
+                  x2={CHART_YLINE_X2}
                   y2={svgHeight}
                   strokeWidth={CHART_LINE_STROKE_WIDTH}
                   stroke={CHART_LINE_STROKE_COLOR}

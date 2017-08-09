@@ -21,7 +21,7 @@
 }
 
 .svg-position {
-  padding-bottom: 50px;
+  padding: 0px 0px 50px 50px;
 }
 
 @keyframes App-logo-spin {
