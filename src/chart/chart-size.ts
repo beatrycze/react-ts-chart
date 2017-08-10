@@ -11,7 +11,6 @@ type ChartSize = {
   widthScale: number;
   svgHeight: number;
   svgWidth: number;
-  maxRectValue: number;
 };
 
 export function getChartSize(container: ContainerSize, graphs: Column[]): ChartSize  {
@@ -28,6 +27,5 @@ export function getChartSize(container: ContainerSize, graphs: Column[]): ChartS
     widthScale: widthScale,
     svgHeight: svgHeight,
     svgWidth: svgWidth,
-    maxRectValue: maxRect.value
   };
 }

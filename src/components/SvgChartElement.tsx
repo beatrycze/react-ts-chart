@@ -10,14 +10,15 @@ interface Props {
   yTextLabel: number;
   value: number;
   label: string;
-  yTickPosition: number;
-  yTick: number;
+  xAxisY: number;
+  axisYtickPosition: number;
+  axisYtickValue: number;
 }
 
 class SvgChartElementComponent extends React.Component<Props, {}> {
   render() {
     // object destructuring
-    const { xRect, yRect, width, height, xText, yTextValue, yTextLabel, value, label, yTickPosition, yTick } = this.props;
+    const { xRect, yRect, width, height, xText, yTextValue, yTextLabel, value, label, xAxisY, axisYtickPosition, axisYtickValue } = this.props;
     return (
       <g>
         <rect
@@ -42,11 +43,11 @@ class SvgChartElementComponent extends React.Component<Props, {}> {
           {label}
         </text>
         <text
-          x='-30' //
-          y={yTickPosition}
+          x={xAxisY}
+          y={axisYtickPosition}
           textAnchor="middle"
         >
-          {yTick}
+          {axisYtickValue}
         </text>
       </g>
     );

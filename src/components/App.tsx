@@ -8,13 +8,16 @@ import { getChartSize } from '../chart/chart-size';
 
 const logo = require('../logo.svg');
 
-const CHART_SPACER = 122; // svg nie wypełnia całej szerokości diva
+const CHART_SPACER = 132; // svg nie wypełnia całej szerokości diva
 
 const CHART_XRECT_CALC = 0.25;
 const CHART_WIDTH_CALC = 2;
 const CHART_XTEXT_CALC = 0.50;
 const CHART_YTEXT_CALC = 4;
-const CHART_YTEXT_LABEL_CALC = 3;
+const CHART_YTEXT_LABEL_CALC = 4;
+
+const CHART_XYAXIS = -30;
+const CHART_YTICK_POSITION_CALC = 0.99;
 
 const CHART_LINE_X1 = '0';
 const CHART_LINE_STROKE_WIDTH = '1';
@@ -93,7 +96,7 @@ class App extends React.Component<AppProps, AppState> {
       const yRect = svgHeight - element.value * heightScale;
       const height = element.value * heightScale;
       const xText = (index + CHART_XTEXT_CALC) * svgCapacity;
-      const yTickPosition = svgHeight - element.value * heightScale + 14; // TODO
+      const axisYtickPosition = svgHeight - element.value * heightScale * CHART_YTICK_POSITION_CALC; // TODO
 
       return (
         <SvgChartElement
@@ -107,8 +110,9 @@ class App extends React.Component<AppProps, AppState> {
           yTextLabel={chartElementParams.yTextLabel}
           value={element.value}
           label={element.label}
-          yTickPosition={yTickPosition}
-          yTick={element.value}
+          xAxisY={CHART_XYAXIS}
+          axisYtickPosition={axisYtickPosition}
+          axisYtickValue={element.value}
         />
       );
     });
