@@ -7,29 +7,25 @@ interface ContainerSize {
 }
 
 type ChartSize = {
-  heightCalc: number;
-  widthCalc: number;
-  svg: {
-    height: number;
-    width: number;
-  };
+  heightScale: number;
+  widthScale: number;
+  svgHeight: number;
+  svgWidth: number;
 };
 
 export function getChartSize(container: ContainerSize, graphs: Column[]): ChartSize  {
   const maxRect: Column = graphs.reduce(
-      (prev: Column, current: Column) => (prev.value > current.value) ? prev : current
+    (prev: Column, current: Column) => (prev.value > current.value) ? prev : current
   );
-  const heightCalc: number = (container.height - container.spacer / 2) / maxRect.value;
-  const widthCalc: number = (container.width - container.spacer) / graphs.length;
-  const svgHeight: number = heightCalc * maxRect.value;
-  const svgWidth: number = widthCalc * graphs.length;
+  const svgHeight: number = (container.height - container.spacer);
+  const svgWidth: number = (container.width - container.spacer);
+  const heightScale: number = svgHeight / maxRect.value;
+  const widthScale: number = svgWidth / graphs.length;
 
   return {
-      heightCalc: heightCalc,
-      widthCalc: widthCalc,
-      svg: {
-          height: svgHeight,
-          width: svgWidth
-      }
+    heightScale: heightScale,
+    widthScale: widthScale,
+    svgHeight: svgHeight,
+    svgWidth: svgWidth,
   };
 }
